@@ -3,7 +3,6 @@
 let fs = require('fs');
 let http = require("https");
 let anahtar: any;
-let haberler: any;
 
 $(document).ready(() => {
   zamaniYaz();
@@ -33,8 +32,8 @@ $(document).ready(() => {
 
         res.on("end", function () {
           let body = Buffer.concat(chunks);
-          haberler = jQuery.parseJSON(body.toString());
-          console.log(haberler);
+          let haberler = jQuery.parseJSON(body.toString());
+          haberleriGoster(haberler);
         });
       });
       req.end();
@@ -42,6 +41,43 @@ $(document).ready(() => {
   });
 });
 
+function haberleriGoster(haberler: any) {
+  console.log(haberler);
+
+  let ifade: string = "<div class='ui four stackable special cards'>";
+  for (let i = 0; i < haberler.length; i++) {
+    let haber = haberler[i];
+    ifade += "\
+    <div class='fluid card'>\
+      <div class='blurring dimmable image'>\
+        <div class='ui dimmer'>\
+          <div class='content'>\
+            <div class='center'><div class='ui inverted button'>Haberi Oku</div></div>\
+          </div>\
+        </div>";
+    if (haber.Files.length > 0) {
+      if (haber.Files[0].FileUrl) {
+        ifade += "<img src='" + haber.Files[0].FileUrl + "' />";
+      }
+    }
+    ifade += "</div>\
+      <div class='content'>\
+        <a class='header haberBaslik'>" + haber.Title + "</a>\
+        <div class='meta haberAciklama'>\
+          <span class='date'><br>" + haber.Description + "</span>\
+        </div>\
+      </div>\
+      <div class='extra content'><a class='haberTarih'><i class='calendar icon'></i>" + haber.ModifiedDate + "</a></div>\
+    </div>";
+  }
+  ifade += "</div>";
+
+  document.getElementById("haberler").innerHTML = ifade;
+
+  $(".special.cards .image").dimmer({
+    on: "hover",
+  });
+}
 
 function zamaniYaz() {
   setInterval(function () {
@@ -67,4 +103,8 @@ function zamaniYaz() {
 
   document.getElementById("yil").innerHTML = new Date().getUTCFullYear().toString();
 
+}
+
+function zamanFormati(zaman: string): string {
+  return zaman;
 }
