@@ -6,3 +6,4 @@ build/
 *.DB-wal
 *.DB-shm
 .vscode/
+anahtar

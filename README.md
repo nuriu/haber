@@ -20,3 +20,5 @@ Gerekli paketleri kurmak için gerekli komut;
 
 Derleyip çalıştırmak için gerekli komut;
 > npm run build && npm run start
+
+Not: Çalıştırmadan önce proje dizininde anahtar isimli bir dosya oluşturup Hürriyet API anahtarınızı girmelisiniz.
