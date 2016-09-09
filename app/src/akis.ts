@@ -67,7 +67,7 @@ function haberleriGoster(haberler: any) {
           <span class='date'><br>" + haber.Description + "</span>\
         </div>\
       </div>\
-      <div class='extra content'><a class='haberTarih'><i class='calendar icon'></i>" + haber.ModifiedDate + "</a></div>\
+      <div class='extra content'><a class='haberTarih'><i class='calendar icon'></i>" + zamanFormati(haber.ModifiedDate) + "</a></div>\
     </div>";
   }
   ifade += "</div>";
@@ -106,5 +106,23 @@ function zamaniYaz() {
 }
 
 function zamanFormati(zaman: string): string {
-  return zaman;
+  let gun: string = "";
+  let ay: string = "";
+  let yil: string = "";
+  let saat: string = "";
+
+  for (let i = 0; i < zaman.length; i++) {
+    if (zaman[i] !== "-" && zaman[i] !== "T") {
+      if (i < 4) {
+        yil += zaman[i];
+      } else if (i < 7) {
+        ay += zaman[i];
+      } else if (i < 10) {
+        gun += zaman[i];
+      } else if (i < 16) {
+        saat += zaman[i];
+      }
+    }
+  }
+  return (gun + "." + ay + "." + yil + " | " + saat);
 }
