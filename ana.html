@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hürriyet Masaüstü</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="app/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="app/css/akis.css">
+    <link rel="stylesheet" type="text/css" href="app/css/ust.css">
+    <link rel="stylesheet" type="text/css" href="app/css/uygulama.css">
+
+    <!-- JS -->
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="semantic/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="build/common.js"></script>
+    <script type="text/javascript" src="build/app.js"></script>
+</head>
+
+<body class="uygulama">
+    <div id="profil">
+    </div>
+
+    <div class="ui two column doubling grid container" id="icerik">
+
+        <div class="three wide column" id="menu">
+            <aside id="menu" class="menu menu-renkli acik" role="navigation">
+
+                <div class="menu-bas header-renkli">
+                    <div class="ust-bar"></div>
+                    <a class="menu-baslik" href="#"><i class="tasks icon"></i> Kaynaklar</a>
+                </div>
+
+                <ul class="nav menu-nav" id="projeListesi">
+                    <li class="aktif">
+                        <a href='#'> <img src="http://s.hurriyet.com.tr/static/images/hurriyet/hurriyet-icons/smalltile.png" height="30%" /> Hürriyet</a>
+                    </li>
+                </ul>
+
+            </aside>
+        </div>
+
+        <div class="thirteen wide column" id="akis">
+            <div id="zaman">
+                <div class="ust-bar"></div>
+                
+                <div id="tarihAlani">
+                    <ul>
+                        <li id="gun">00</li>
+                        <li id="ay">00</li>
+                        <li id="yil">0000</li>
+                    </ul>
+                </div>
+
+                <div id="saatAlani">
+                    <ul>
+                        <li id="saat">00</li>
+                        <li> : </li>
+                        <li id="dakika">00</li>
+                        <li> : </li>
+                        <li id="saniye">00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ust-bar"></div>
+
+            <div class="filtre"><input id="filtre" placeholder="Filtrele" type="text" required="" /></div>
+
+            <div id="haberler">
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

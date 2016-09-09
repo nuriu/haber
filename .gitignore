@@ -1,0 +1,8 @@
+node_modules/
+typings/
+semantic/
+build/
+*.DB
+*.DB-wal
+*.DB-shm
+.vscode/
