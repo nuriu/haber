@@ -54,7 +54,7 @@ export class Hurriyet {
                         </div></div>";
             if (haber.Files.length > 0) {
                 if (haber.Files[0].FileUrl) {
-                    ifade += "<img src='" + haber.Files[0].FileUrl + "' />";
+                    ifade += "<div class='haberFotografi'><img class='ui rounded image' src='" + haber.Files[0].FileUrl + "' /></div>";
                 }
             }
             ifade += "</div>\
