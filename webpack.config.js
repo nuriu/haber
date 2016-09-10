@@ -7,6 +7,7 @@ module.exports = {
   debug: true,
   entry: {
     'app': [
+      './app/src/hurriyet',
       './app/src/akis'
     ]
   },
