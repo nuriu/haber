@@ -11,6 +11,36 @@ export class Hurriyet {
         return this.anahtar;
     }
 
+
+    public haberDetayiniGoster(id: string) {
+        let haber: any;
+        let secenekler = {
+            headers: {
+                accept: "application/json",
+                apikey: this.anahtar,
+            },
+            hostname: "api.hurriyet.com.tr",
+            method: "GET",
+            path: "/v1/articles/" + id,
+            port: null,
+        };
+
+        let istek = http.request(secenekler, (cevap) => {
+            let chunks = [];
+
+            cevap.on("data", (chunk) => {
+                chunks.push(chunk);
+            });
+
+            cevap.on("end", () => {
+                let body = Buffer.concat(chunks);
+                haber = jQuery.parseJSON(body.toString());
+                this.haberDetayiniYazdir(haber);
+            });
+        });
+        istek.end();
+    }
+
     public sonElliHaberiAnasayfadaGoster() {
         let haberler: any;
         let secenekler = {
@@ -40,8 +70,26 @@ export class Hurriyet {
         istek.end();
     }
 
-    private haberDetayiniGoster(id: string) {
-        console.log(id);
+    private zamanFormati(zaman: string): string {
+        let gun: string = "";
+        let ay: string = "";
+        let yil: string = "";
+        let saat: string = "";
+
+        for (let i = 0; i < zaman.length; i++) {
+            if (zaman[i] !== "-" && zaman[i] !== "T") {
+                if (i < 4) {
+                    yil += zaman[i];
+                } else if (i < 7) {
+                    ay += zaman[i];
+                } else if (i < 10) {
+                    gun += zaman[i];
+                } else if (i < 16) {
+                    saat += zaman[i];
+                }
+            }
+        }
+        return (gun + "." + ay + "." + yil + " | " + saat);
     }
 
     private anasayfayaYazdir(haberler: any) {
@@ -87,27 +135,20 @@ export class Hurriyet {
         });
     }
 
+    private haberDetayiniYazdir(haber: any) {
+        let ifade: string = "";
+        ifade += "<i class='close icon'></i><div class='header'>" + haber.Title + "</div>";
+        ifade += "<div class='content'><div class='ui grid'><div class='row'>";
+        ifade += "<div class='sixteen wide column'>\
+                        <img class='ui left floated image' src='" + haber.Files[0].FileUrl + "' />\
+                        <p>" + haber.Text + "</p>\
+                    </div>\
+                </div>";
 
-    private zamanFormati(zaman: string): string {
-        let gun: string = "";
-        let ay: string = "";
-        let yil: string = "";
-        let saat: string = "";
+        document.getElementById("haberDetaylari").innerHTML = ifade;
 
-        for (let i = 0; i < zaman.length; i++) {
-            if (zaman[i] !== "-" && zaman[i] !== "T") {
-                if (i < 4) {
-                    yil += zaman[i];
-                } else if (i < 7) {
-                    ay += zaman[i];
-                } else if (i < 10) {
-                    gun += zaman[i];
-                } else if (i < 16) {
-                    saat += zaman[i];
-                }
-            }
-        }
-        return (gun + "." + ay + "." + yil + " | " + saat);
+        $(".long.modal").modal("show");
     }
+
 
 }
