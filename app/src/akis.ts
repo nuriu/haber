@@ -2,7 +2,7 @@
 
 import { Hurriyet } from "./hurriyet";
 
-let fs = require("fs");
+const fs = require("fs");
 let istemci: Hurriyet;
 
 $(document).ready(() => {
@@ -13,7 +13,9 @@ $(document).ready(() => {
       return console.log(hata);
     } else {
       istemci = new Hurriyet(veri);
+      console.log(istemci);
       istemci.sonElliHaberiAnasayfadaGoster();
+      istemci.sonElliKoseYazisiniAnasayfadaGoster();
     }
   });
 });
@@ -48,11 +50,10 @@ function zamaniYaz() {
     "Eylül",
     "Ekim",
     "Kasım",
-    "Aralık"
+    "Aralık",
   ][new Date().getMonth()];
 
   document.getElementById("ay").innerHTML = ay;
 
   document.getElementById("yil").innerHTML = new Date().getUTCFullYear().toString();
-
 }

@@ -6,10 +6,9 @@
     <title>Hürriyet Masaüstü</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="app/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="app/css/akis.css">
+    <link rel="stylesheet" type="text/css" href="app/css/filtre.css">
     <link rel="stylesheet" type="text/css" href="app/css/ust.css">
     <link rel="stylesheet" type="text/css" href="app/css/haber.css">
     <link rel="stylesheet" type="text/css" href="app/css/uygulama.css">
@@ -23,66 +22,68 @@
 </head>
 
 <body class="uygulama">
-    <div id="profil">
-    </div>
 
-    <div class="ui two column doubling grid container" id="icerik">
+    <div id="zaman">
+        <div class="ust-bar"></div>
 
-        <div class="three wide column" id="menu">
-            <aside id="menu" class="menu menu-renkli acik" role="navigation">
-
-                <div class="menu-bas header-renkli">
-                    <div class="ust-bar"></div>
-                    <a class="menu-baslik" href="#"><img src="http://s.hurriyet.com.tr/static/images/hurriyet/hurriyet-icons/smalltile.png" height="30%"
-                        /> Hürriyet</a>
-                </div>
-
-                <ul class="nav menu-nav" id="projeListesi">
-                    <li class="aktif">
-                        <a href='#'> <i class='newspaper icon'></i> Haberler</a>
-                    </li>
-                    <li>
-                        <a href='#'> <i class='columns icon'></i> Köşe Yazarları</a>
-                    </li>
-                </ul>
-
-            </aside>
+        <div id="tarihAlani">
+            <ul>
+                <li id="gun"></li>
+                <li id="ay"></li>
+                <li id="yil"></li>
+            </ul>
         </div>
 
-        <div class="thirteen wide column" id="akis">
-            <div id="zaman">
-                <div class="ust-bar"></div>
+        <div id="saatAlani">
+            <ul>
+                <li id="saat"></li>
+                <li> : </li>
+                <li id="dakika"></li>
+                <li> : </li>
+                <li id="saniye"></li>
+            </ul>
+        </div>
+    </div>
 
-                <div id="tarihAlani">
-                    <ul>
-                        <li id="gun">00</li>
-                        <li id="ay">00</li>
-                        <li id="yil">0000</li>
-                    </ul>
-                </div>
-
-                <div id="saatAlani">
-                    <ul>
-                        <li id="saat">00</li>
-                        <li> : </li>
-                        <li id="dakika">00</li>
-                        <li> : </li>
-                        <li id="saniye">00</li>
-                    </ul>
+    <div class="ui top attached menu" id="menu">
+        <div class="ui dropdown icon item">
+            <img src="http://s.hurriyet.com.tr/static/images/hurriyet/hurriyet-icons/smalltile.png" height="30%" />
+            <div class="menu">
+                <div class="item">
+                    Hakkında
                 </div>
             </div>
+        </div>
+        <div class="filtre"><input id="filtre" placeholder="Filtrele" type="text" required="" /></div>
+    </div>
+    <div class="ui bottom attached segment" id="icerik">
+        <div class="ui two column stackable grid">
+            <div class="eleven wide column">
+                <h4 class="ui horizontal divider header"><i class="newspaper icon"></i> Haberler</h4>
 
-            <div class="ust-bar"></div>
+                <div id="haberler">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam optio, neque necessitatibus repellat
+                        iusto eum provident quae soluta ratione, nam veniam maxime explicabo placeat amet quasi totam, quaerat
+                        nisi illo!</p>
+                </div>
 
-            <div class="filtre"><input id="filtre" placeholder="Filtrele" type="text" required="" /></div>
-
-            <div id="haberler">
+                <div class="ui long large modal" id="detayGorunumu">
+                </div>
             </div>
-
-            <div class="ui long large modal" id="haberDetaylari">
+            <div class="five wide column">
+                <h4 class="ui horizontal divider header"><i class="newspaper icon"></i> Köşe Yazıları</h4>
+                <div id="koseYazilari">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum magnam fugiat eveniet ratione dignissimos
+                        atque laudantium, vel quas eius consequatur quaerat at nemo pariatur officia. Possimus non odio laudantium
+                        dolore.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $('.ui.dropdown').dropdown();
+     </script>
 </body>
 
 </html>

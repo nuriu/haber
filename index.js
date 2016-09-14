@@ -5,7 +5,7 @@ var anaPencere;
 
 function pencereyiOlustur() {
     anaPencere = new BrowserWindow({
-        width: 1800,
+        width: 1500,
         height: 900,
         center: true,
         icon: __dirname + "/app/img/is.png",
