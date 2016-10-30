@@ -1,6 +1,10 @@
 # Haber
 
-Masaüstü haber uygulaması.
+>Masaüstü haber uygulaması.
+
+[![Dependency Status](https://david-dm.org/nuriu/haber/status.svg)](https://david-dm.org/nuriu/haber)
+[![Dev-Dependency Status](https://david-dm.org/nuriu/haber/dev-status.svg)](https://david-dm.org/nuriu/haber?type=dev)
+
 
 ![Uygulamanın Son Durumu](resim/durum.png)
 
