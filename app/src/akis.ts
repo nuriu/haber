@@ -12,10 +12,11 @@ $(document).ready(() => {
     if (hata) {
       return console.log(hata);
     } else {
+      veri = veri.replace(/(\r\n|\n|\r)/gm,"");//remove line feed
       istemci = new Hurriyet(veri);
       console.log(istemci);
-      istemci.sonElliHaberiAnasayfadaGoster();
-      istemci.sonElliKoseYazisiniAnasayfadaGoster();
+      istemci.sonElliHaberiAnasayfadaGoster(5);
+      istemci.sonElliKoseYazisiniAnasayfadaGoster(3);
     }
   });
 });
@@ -23,18 +24,14 @@ $(document).ready(() => {
 function zamaniYaz() {
   setInterval(() => {
     let saniye = new Date().getSeconds();
-    $("#saniye").html((saniye < 10 ? "0" : "") + saniye);
-  }, 1000);
-
-  setInterval(() => {
     let dakika = new Date().getMinutes();
-    $("#dakika").html((dakika < 10 ? "0" : "") + dakika);
-  }, 1000);
-
-  setInterval(() => {
     let saat = new Date().getHours();
+
+    $("#saniye").html((saniye < 10 ? "0" : "") + saniye);
+    $("#dakika").html((dakika < 10 ? "0" : "") + dakika);
     $("#saat").html((saat < 10 ? "0" : "") + saat);
   }, 1000);
+
 
   document.getElementById("gun").innerHTML = new Date().getDate().toString();
 
